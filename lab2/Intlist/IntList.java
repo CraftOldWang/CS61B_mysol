@@ -120,33 +120,38 @@ public class IntList {
         {
             return null;
         }
+//        Iteration_ver
+//        IntList result = new IntList();//first 默认为0 ,但我前面保证了AB不会都是null，故必然可修改。
+//        IntList ptr = result;
+//        if(A != null){
+//            ptr.first = A.first;
+//            A = A.rest;
+//            while(A != null){
+//                ptr.rest= new IntList();
+//                ptr = ptr.rest;
+//                ptr.first = A.first;
+//                A = A.rest;
+//            }
+//        } else{
+//            result.first = B.first;
+//            B = B.rest;
+//        }
+//        while(B != null){
+//            ptr.rest = new IntList();
+//            ptr = ptr.rest;
+//            ptr.first = B.first;
+//            B = B.rest;
+//        }
+//
+//        return result;
 
-        IntList result = new IntList();//first 默认为0 ,但我前面保证了AB不会都是null，故必然可修改。
-        IntList ptr = result;
-        if(A != null){
-            ptr.first = A.first;
-            A = A.rest;
-            while(A != null){
-                ptr.rest= new IntList();
-                ptr = ptr.rest;
-                ptr.first = A.first;
-                A = A.rest;
-            }
-        } else{
-            result.first = B.first;
-            B = B.rest;
+//      recursive_ver 简单太多了。
+        if(A!=null){
+            return new IntList(A.first,catenate(A.rest, B));
+        }else{
+            return new IntList(B.first, catenate(A, B.rest));
         }
-        while(B != null){
-            ptr.rest = new IntList();
-            ptr = ptr.rest;
-            ptr.first = B.first;
-            B = B.rest;
-        }
 
-
-
-
-        return result;
     }
 
 
